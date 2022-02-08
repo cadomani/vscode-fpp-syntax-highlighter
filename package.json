@@ -1,0 +1,25 @@
+{
+    "name": "fpp",
+    "displayName": "FPP Language",
+    "description": "Syntax highlighting support for F Prime Prime files ",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.64.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "fpp",
+            "aliases": ["F Prime Prime", "FPP"],
+            "extensions": [".fpp"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "fpp",
+            "scopeName": "source.fpp",
+            "path": "./syntaxes/FPP.tmLanguage.json"
+        }]
+    }
+}

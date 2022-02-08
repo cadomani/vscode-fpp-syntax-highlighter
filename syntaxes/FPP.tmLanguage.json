@@ -1,0 +1,80 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "F Prime Prime",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#annotations"
+		},
+		{
+			"include": "#entities"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#identifiers"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.number-sign.fpp",
+				"match": "#.*$"
+			}]
+		},
+		"annotations": {
+			"patterns": [{
+				"name": "emphasis.fpp",
+				"match": "@.*$"
+			}]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.fpp",
+				"match": "\\b(active|activity|always|array|assert|async|at|base|block|change|command|component|connections|constant|cpu|default|diagnostic|drop|enum|event|false|fatal|format|get|guarded|health|high|id|import|include|input|instance|internal|locate|low|match|module|on|opcode|orange|output|param|passive|phase|port|priority|private|queue|queued|recv|red|ref|reg|resp|save|serial|set|severity|size|stack|struct|sync|telemetry|text|throttle|time|topology|true|type|update|warning|with|yellow)\\b"
+			}]
+		},
+		"types": {
+			"patterns": [{
+				"name": "entity.name.type.fpp",
+				"match": "\\b(F32|F64|I16|I32|I64|I8|U16|U32|U64|U8|bool|string)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.fpp",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fpp",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.fpp",
+				"match": "(<\\d+(\\.\\d*)?([Ee]-?\\d+)?)|(\\.\\d+([Ee]-?\\d+)?)|(<0[xX]\\x+)"
+			}]
+		},
+		"identifiers": {
+			"patterns": [{
+				"name": "entity.other.attribute-name.fpp",
+				"match": "\\$?[_A-Za-z][_A-Za-z0-9]*"
+			}]
+		}
+	},
+	"scopeName": "source.fpp"
+}
