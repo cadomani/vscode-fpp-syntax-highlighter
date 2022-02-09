@@ -40,8 +40,15 @@
 				"match": "@.*$"
 			}]
 		},
+		"entities": {
+			"patterns": [{
+				"name": "markup.bold.fpp",
+				"match": "\\b(component|enum|module|struct|topology)\\b"
+			}]
+		},
 		"keywords": {
 			"patterns": [{
+				"comment": "Reserved Keyword",
 				"name": "keyword.control.fpp",
 				"match": "\\b(active|activity|always|array|assert|async|at|base|block|change|command|component|connections|constant|cpu|default|diagnostic|drop|enum|event|false|fatal|format|get|guarded|health|high|id|import|include|input|instance|internal|locate|low|match|module|on|opcode|orange|output|param|passive|phase|port|priority|private|queue|queued|recv|red|ref|reg|resp|save|serial|set|severity|size|stack|struct|sync|telemetry|text|throttle|time|topology|true|type|update|warning|with|yellow)\\b"
 			}]
@@ -65,8 +72,8 @@
 		},
 		"numbers": {
 			"patterns": [{
-				"name": "constant.numeric.fpp",
-				"match": "(<\\d+(\\.\\d*)?([Ee]-?\\d+)?)|(\\.\\d+([Ee]-?\\d+)?)|(<0[xX]\\x+)"
+				"name": "meta.preprocessor.numeric",
+				"match": "0[x|X][A-Fa-f0-9]{1,9}$"
 			}]
 		},
 		"identifiers": {
