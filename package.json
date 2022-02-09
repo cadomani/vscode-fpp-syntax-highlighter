@@ -1,8 +1,11 @@
 {
     "name": "fpp",
     "displayName": "FPP Language",
-    "description": "Syntax highlighting support for F Prime Prime files ",
+    "description": "Syntax highlighting support for F Prime Prime files.",
     "version": "0.0.1",
+    "repository": {
+        "url": "https://github.com/cadomani/vscode-fpp-syntax-highlighter"
+    },
     "engines": {
         "vscode": "^1.64.0"
     },

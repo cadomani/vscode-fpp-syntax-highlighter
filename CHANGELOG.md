@@ -1,5 +1,5 @@
 # Change Log
-Initial release
+Initial release (Alpha)
 
 Add support for:
   Keywords
@@ -13,5 +13,5 @@ Derived from [vim editor mappings](https://github.com/fprime-community/fpp/blob/
 
 ## [Unreleased]
 
-## [1.0.0]
+## [0.0.1]
 - Initial release
