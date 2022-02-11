@@ -1,9 +1,10 @@
 {
-    "name": "fpp",
+    "name": "fpp-syntax-highlighting",
     "displayName": "FPP Language",
     "description": "Syntax highlighting support for F Prime Prime files.",
     "version": "0.0.1",
     "repository": {
+        "type": "git",
         "url": "https://github.com/cadomani/vscode-fpp-syntax-highlighter"
     },
     "engines": {
@@ -16,12 +17,12 @@
         "languages": [{
             "id": "fpp",
             "aliases": ["F Prime Prime", "FPP"],
-            "extensions": [".fpp"],
+            "extensions": [".fpp", ".fppi"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
             "language": "fpp",
-            "scopeName": "source.fpp",
+            "scopeName": "source.fpp.fppi",
             "path": "./syntaxes/FPP.tmLanguage.json"
         }]
     }

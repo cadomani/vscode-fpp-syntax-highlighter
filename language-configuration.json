@@ -2,6 +2,7 @@
     "comments": {
         // symbol used for single line comment. Remove this entry if your language does not support line comments
         "lineComment": "#",
+        "blockComment": ["\"\"\"", "\"\"\""]
     },
     // symbols used as brackets
     "brackets": [
@@ -11,11 +12,11 @@
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\"", "\""],
-        ["'", "'"]
+		{ "open": "{", "close": "}" },
+		{ "open": "[", "close": "]" },
+		{ "open": "(", "close": ")" },
+        { "open": "\"\"\"", "close": "\"\"\"", "notIn": ["string"] },
+        { "open": "\"", "close": "\"", "notIn": ["string"] }
     ],
     // symbols that can be used to surround a selection
     "surroundingPairs": [
@@ -23,6 +24,12 @@
         ["[", "]"],
         ["(", ")"],
         ["\"", "\""],
-        ["'", "'"]
+        ["\"\"\"", "\"\"\""]
+    ],
+    "onEnterRules": [
+        {
+            "beforeText": "^.*\\s*(module|component|enum|topology|connections|struct)\\s.*?{\\s*$",
+            "action": { "indent": "indentOutdent" }
+        },
     ]
 }
