@@ -12,6 +12,15 @@
 			"include": "#entities"
 		},
 		{
+			"include": "#libraries"
+		},
+		{
+			"include": "#qualified-identifiers"
+		},
+		{
+			"include": "#members"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -42,17 +51,79 @@
 			}]
 		},
 		"entities": {
-			"patterns": [{
-				"name": "markup.bold.fpp",
-				"match": "\\b(component|enum|module|struct|topology)\\b"
-			}]
+			"comment": "Large, bracket-enclosed constructs with inner members",
+			"patterns": [
+				{
+					"name": "markup.bold.fpp",
+					"match": "\\b(enum|module|struct|topology)\\b"
+				},
+				{
+					"comment": "Component and component-kind modifier (5.3.1)",
+					"match": "\\s(active|passive|queued)\\s(component)\\s([_A-Za-z]+)",
+					"captures": {
+						"1": {
+							"name": "storage.modifier"
+						},
+						"2": {
+							"name": "entity.name.class"
+						}
+					}
+				}	
+			]
+		},
+		"libraries": {
+			"comment": "F Prime Libraries (Includes Drv, Fpp, Fw, Os, RPI, STest, Svc, and Utils)",
+			"patterns": [
+				{
+					"match": "\\b(?:(Drv|Fpp|Fw|Os|Ref|RPI|STest|Svc|Utils)\\.([_A-Za-z0-9]+))\\b",
+					"captures": { 
+						"1": {
+							"name": "support.class"
+						},
+						"2": {
+							"name": "support.function"
+						}
+					}
+				}
+			]
+		},
+		"qualified-identifiers": {
+			"match": "\\b(?:([_A-Za-z0-9]+)\\.([_A-Za-z0-9]+))\\b",
+			"captures": { 
+				"1": {
+					"name": "entity.name.tag"
+				},
+				"2": {
+					"name": "entity.other.attribute-name"
+				}
+			}
+		},
+		"members": {
+			"comment": "Component, port, module, and topology members",
+			"patterns": [
+				{
+					"comment": "Component instance definition (5.4.1)",
+					"match": "\\s(instance)\\s(?:[_A-Za-z0-9]+)\\s?:\\s",
+					"captures": {
+						"1": {
+							"name": "entity.other.inherited-class"
+						}
+					}
+				}
+			]
 		},
 		"keywords": {
+			"comment": "Reserved Keyword",
 			"patterns": [{
-				"comment": "Reserved Keyword",
 				"name": "keyword.control.fpp",
-				"match": "\\b(active|activity|always|array|assert|async|at|base|block|change|command|component|connections|constant|cpu|default|diagnostic|drop|enum|event|false|fatal|format|get|guarded|health|high|id|import|include|input|instance|internal|locate|low|match|module|on|opcode|orange|output|param|passive|phase|port|priority|private|queue|queued|recv|red|ref|reg|resp|save|serial|set|severity|size|stack|struct|sync|telemetry|text|throttle|time|topology|true|type|update|warning|with|yellow)\\b"
-			}]
+				"match": "\\b(?<!\\$)(active|passive|queued|component|activity|always|array|assert|async|at|base|block|change|command|connections|constant|cpu|default|diagnostic|drop|enum|event|fatal|format|get|guarded|health|high|id|import|include|input|instance|internal|locate|low|match|module|on|opcode|orange|output|param|phase|port|priority|private|queue|recv|red|ref|reg|resp|save|serial|set|severity|size|stack|struct|sync|telemetry|text|throttle|time|topology|type|update|warning|with|yellow)\\b"
+			},
+			{
+				"name": "constant.language",
+				"match": "\\b(true|false)\\b"
+			}
+		
+		]
 		},
 		"types": {
 			"patterns": [{
@@ -79,16 +150,17 @@
 			]
 		},
 		"numbers": {
-			"patterns": [{
-				"name": "meta.preprocessor.numeric",
-				"match": "0[x|X][A-Fa-f0-9]{1,9}$"
-			}]
-		},
-		"identifiers": {
-			"patterns": [{
-				"name": "entity.other.attribute-name.fpp",
-				"match": "\\$?[_A-Za-z][_A-Za-z0-9]*"
-			}]
+			"comment": "Decimal, Hex, Octal, or Opcodes",
+			"patterns": [
+				{
+					"name": "meta.preprocessor.numeric",
+					"match": "\\b0[x|X][A-Fa-f0-9]{1,9}\\b"
+				},
+				{
+					"name": "constant.numeric",
+					"match": "\\b[0-9]+\\b"
+				}
+			]
 		}
 	},
 	"scopeName": "source.fpp.fppi"
